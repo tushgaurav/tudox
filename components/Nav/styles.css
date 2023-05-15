@@ -1,0 +1,33 @@
+.nav {
+  background-color: var(--color-main);
+  color: var(--color-background);
+  height: 2.2em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.logo_img:hover {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.logo-text {
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
