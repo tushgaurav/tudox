@@ -1,19 +1,22 @@
 .nav {
   background-color: var(--color-main);
   color: var(--color-background);
-  height: 2.2em;
-  padding: 0.5em;
+
+  padding: 0.2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .logo {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 2px;
+  text-decoration: none;
+  color: var(--color-background);
 }
 
 .logo_img:hover {
@@ -30,4 +33,44 @@
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+}
+
+.nav_links {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5em;
+  list-style: none;
+  margin-right: 2em;
+}
+
+.nav_link {
+  opacity: 0.2;
+}
+
+.nav_link:hover {
+  opacity: 1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+
+  .nav_links {
+    margin-left: 0;
+    margin-right: 0;
+    gap: 1em;
+  }
+
+  .nav_link {
+    opacity: 1;
+    margin-bottom: 0.5em;
+  }
 }
