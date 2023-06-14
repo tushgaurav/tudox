@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 
@@ -9,7 +10,9 @@ export default function Home() {
           Simplify your life, one task at a time.
         </h1>
         <div className="row">
-          <button className="btn">Try Now</button>
+          <Link href="/app" className="btn">
+            Try Now
+          </Link>
           <p className={styles.offer}>Free for students and teachers</p>
         </div>
       </main>
