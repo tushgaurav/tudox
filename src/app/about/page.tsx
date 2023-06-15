@@ -1,4 +1,12 @@
+import Image from "next/image";
 import CoolHeading from "../../../components/CoolHeading/CoolHeading";
+
+import dp1 from "./images/dp_image1.svg";
+import dp2 from "./images/dp_image2.svg";
+import dp3 from "./images/dp_image3.svg";
+import dp4 from "./images/dp_image4.svg";
+
+import styles from "./page.module.css";
 
 export default function About() {
   return (
@@ -57,22 +65,34 @@ export default function About() {
         </p>
       </div>
 
-      <div>
-        <h2>Our Team</h2>
-        <div>
+      <h2>Our Team</h2>
+      <div className={styles.team_section}>
+        <div className={styles.team_member}>
+          <Image src={dp1} alt="Rachel Amber" width={200} height={200} />
           <h3>Rachel Amber</h3>
           <p>Founder</p>
         </div>
 
-        <div>
+        <div className={styles.team_member}>
+          <Image src={dp2} alt="Rachel Amber" width={200} height={200} />
           <h3>Max Caulfield</h3>
           <p>UI/UX Design & Research</p>
         </div>
 
-        <div>
+        <div className={styles.team_member}>
+          <Image src={dp3} alt="Rachel Amber" width={200} height={200} />
           <h3>Chloe Price</h3>
           <p>Support & Communications</p>
         </div>
+      </div>
+
+      <div>
+        <h2>Suggestions are always welcomed!</h2>
+        <p>
+          We are still working on improving the app and adding new features. If
+          you have any feedback or suggestions, please feel free to contact us
+          at tudox@tushgaurav.in
+        </p>
       </div>
     </div>
   );
