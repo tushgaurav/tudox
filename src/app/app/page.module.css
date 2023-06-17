@@ -1,15 +1,13 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .week_view {
   margin-top: 2em;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  padding: 0 20px;
-  box-sizing: border-box;
-  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
 }
 
 .weekday {
@@ -17,24 +15,113 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-
-  padding: 0 20px;
-  box-sizing: border-box;
+  padding: 10px 20px;
   overflow: auto;
+  background-color: #0e101c;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.weekday:hover {
+  transform: scale(1.05);
 }
 
 .weekday > h1 {
   font-size: 0.8em;
-  font-weight: 600;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.5em;
 }
 
 .weekday ul {
-  font-size: 0.8em;
+  font-size: 1em;
+  font-weight: 400;
   list-style: none;
   line-height: 1.3em;
+  padding: 0;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.weekday li {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .week_view {
+    grid-template-columns: 1fr;
+  }
+}
+
+.add_task_form {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+.add_task_form h1 {
+  color: #0e101c;
+}
+
+.add_task_form form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.add_task_form .form_control label {
+  display: none;
+}
+
+.add_task_form .form_control {
+  position: relative;
+}
+
+.add_task_form .form_control input,
+.add_task_form .form_control select,
+.add_task_form .form_control textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #eef0f6;
+  color: #0e101c;
+}
+
+.add_task_form .form_control textarea {
+  resize: vertical;
+}
+
+.add_task_form .form_control input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+.add_task_form .form_control button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #0e101c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add_task_form .form_control button:hover {
+  background-color: #192038;
 }

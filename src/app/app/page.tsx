@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
 import { db } from "../../../lib/db";
+import TaskForm from "../../../components/TaskForm/TaskForm";
 
 export const metadata: Metadata = {
   title: "Your Todo List | tudox",
@@ -19,6 +20,7 @@ async function getTasks(userId: string) {
 }
 
 export default async function App() {
+  let showForm = true;
   let user = await db.user.findMany({
     where: {
       name: "Tushar Gaurav",
@@ -109,21 +111,8 @@ export default async function App() {
         </div>
       </div>
 
-      {/* <h1>Your Todolist:</h1>
-      <div>
-        <input type="text" />
-        day:
-        <select>
-          <option>Monday</option>
-          <option>Tuesday</option>
-          <option>Wedneusday</option>
-          <option>Thrusday</option>
-          <option>Friday</option>
-          <option>Saturday</option>
-          <option>Sunday</option>
-        </select>
-        <button>Add</button>
-      </div> */}
+      {/* Form */}
+      <TaskForm />
     </div>
   );
 }
