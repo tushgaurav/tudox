@@ -1,20 +1,25 @@
-.nav {
+.nav_container {
   background-color: var(--color-main);
   color: var(--color-background);
+}
 
+.nav {
+  margin: 0 auto;
+  max-width: 1500px;
   padding: 0.2em;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
 }
 
 .logo {
-  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 2px;
+
+  text-align: center;
   text-decoration: none;
   color: var(--color-background);
 }
@@ -36,11 +41,12 @@
 }
 
 .nav_links {
-  margin-left: auto;
+  /* margin-left: auto; */
   display: flex;
   gap: 0.5em;
   list-style: none;
   margin-right: 2em;
+  margin-left: 2em;
 }
 
 .nav_link {

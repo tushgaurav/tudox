@@ -1,6 +1,39 @@
+import { Metadata } from "next";
 import styles from "./page.module.css";
+import { db } from "../../../lib/db";
 
-export default function App() {
+export const metadata: Metadata = {
+  title: "Your Todo List | tudox",
+  description: "tudox - focus on simplicity",
+};
+
+// Database functions
+async function getTasks(userId: string) {
+  const tasks = await db.task.findMany({
+    where: {
+      userId: userId,
+    },
+  });
+
+  return tasks;
+}
+
+export default async function App() {
+  let user = await db.user.findMany({
+    where: {
+      name: "Tushar Gaurav",
+    },
+  });
+
+  let tasks = await getTasks(user[0].id);
+  let monday_tasks = tasks.filter((task) => task.weekday === "Monday");
+  let tuesday_tasks = tasks.filter((task) => task.weekday === "Tuesday");
+  let wedneusday_tasks = tasks.filter((task) => task.weekday === "Wednesday");
+  let thrusday_tasks = tasks.filter((task) => task.weekday === "Thursday");
+  let friday_tasks = tasks.filter((task) => task.weekday === "Friday");
+  let saturday_tasks = tasks.filter((task) => task.weekday === "Saturday");
+  let sunday_tasks = tasks.filter((task) => task.weekday === "Sunday");
+
   return (
     <div className="container">
       <div className={styles.week_view}>
@@ -8,7 +41,9 @@ export default function App() {
           <h1>Monday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {monday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -16,7 +51,9 @@ export default function App() {
           <h1>Tuesday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {tuesday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -24,7 +61,9 @@ export default function App() {
           <h1>Wedneusday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {wedneusday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -32,7 +71,9 @@ export default function App() {
           <h1>Thrusday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {thrusday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -40,7 +81,9 @@ export default function App() {
           <h1>Friday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {friday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -48,7 +91,9 @@ export default function App() {
           <h1>Saturday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {saturday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
@@ -56,13 +101,15 @@ export default function App() {
           <h1>Sunday</h1>
           <div>
             <ul>
-              <li>Finish building this website.</li>
+              {sunday_tasks.map((task) => {
+                return <li key={task.id}>{task.title}</li>;
+              })}
             </ul>
           </div>
         </div>
       </div>
 
-      <h1>Your Todolist:</h1>
+      {/* <h1>Your Todolist:</h1>
       <div>
         <input type="text" />
         day:
@@ -76,7 +123,7 @@ export default function App() {
           <option>Sunday</option>
         </select>
         <button>Add</button>
-      </div>
+      </div> */}
     </div>
   );
 }
